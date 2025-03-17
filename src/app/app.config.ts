@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
+import { provideRouter, withHashLocation, withInMemoryScrolling, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
@@ -14,7 +14,7 @@ import { errorInterceptor } from './core/interceptor/error/error.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
-     provideRouter(routes,withViewTransitions(),withInMemoryScrolling({scrollPositionRestoration:'top'})),
+     provideRouter(routes,withViewTransitions(),withInMemoryScrolling({scrollPositionRestoration:'top'}),withHashLocation()),
       provideClientHydration(withEventReplay()),
       provideHttpClient(withFetch(),withInterceptors([headerInterceptor,loadingInterceptor,errorInterceptor])),
       provideAnimations(), // required animations providers
