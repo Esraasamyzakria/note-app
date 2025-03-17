@@ -1,0 +1,46 @@
+<nav
+  class="navbar navbar-expand-sm navbar-light  bg-white shadow  "
+>
+  <div class="container">
+    <a routerLink="/home" class="navbar-brand fst-italic colores fs-2 ">Notify</a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      @if (islogin()) {
+        <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a routerLinkActive="routr" routerLink="/home" class="nav-link   colores fs-5" aria-current="page"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a routerLinkActive="routr" routerLink="/about" class="nav-link colores fs-5  ">About</a>
+          </li>
+          <li class="nav-item">
+            <a routerLinkActive="routr" routerLink="/gallery" class="nav-link colores fs-5 ">gallery</a>
+          </li>
+          <li class="nav-item">
+            <a  routerLinkActive="routr" routerLink="/notes" class="nav-link colores fs-5 ">Notes</a>
+          </li>
+        </ul>
+        <button  (click)="authService.SignOut()" class=" btn pink-color me-3" type="submit">Logout</button>
+      }
+      @else {
+        <div class=" ms-auto ">
+          <button  routerLink="/login" class=" btn pink-color me-5" type="submit">Login</button>
+          <button  routerLink="/register" class=" btn pink-color" type="submit">Register</button>
+        </div>
+      }
+    </div>
+  </div>
+</nav>
+

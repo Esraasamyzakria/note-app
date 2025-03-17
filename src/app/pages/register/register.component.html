@@ -1,0 +1,120 @@
+<section class="  bg-white  py-5 my-5 bg-opacity-25 w-50 mx-auto rounded-5  shadow-lg">
+  <div class=" ">
+    <h1 class=" text-center fs-2 pb-3">Register New</h1>
+@if (masgsucess) {
+  <p class=" text-success text-center">
+   {{masgsucess}}
+  </p>
+}
+@else if (errmasage) {
+  <p class="text-danger text-center " >
+   {{errmasage}}
+  </p>
+}
+    <form  [formGroup]="registerform" (ngSubmit)="submitform()">
+      <label for="name" class="form-label ps-2 fw-semibold fst-italic">Name:</label>
+      <div class="mb-2 px-4">
+        <input formControlName="name" type="name" class="form-control" id="name" placeholder="Your name">
+        @if (registerform.get('name')?.errors && registerform.get('name')?.touched) {
+          <div class="alert alert-danger  d-flex align-items-center mt-2 py-2"  role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px"  class="bi   me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <div>
+              @if (registerform.get('name')?.getError('required')) { <li>Name is required</li>}
+              @else if  (registerform.get('name')?.getError('minlength')) {
+                <li>Name Should be more than or equal  3 chars</li>
+              }
+              @else if  (registerform.get('name')?.getError('maxlength')) {
+                <li>Name Should be less than or equal  20 chars</li>
+              }
+            </div>
+          </div>
+        }
+      </div>
+      <label for="email" class="form-label ps-2 fw-semibold fst-italic">Email:</label>
+      <div class="mb-2 px-4">
+
+        <input formControlName="email" type="email" class="form-control" id="email" placeholder="Your email">
+        @if (registerform.get('email')?.errors && registerform.get('email')?.touched) {
+          <div class="alert alert-danger  d-flex align-items-center mt-2 py-2"  role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px"  class="bi   me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <div>
+              @if (registerform.get('email')?.getError('required')) {
+                <li>Email is required</li>
+              }
+              @else if (registerform.get('email')?.getError('email')) {
+                <li>Enter Valid Email</li>
+              }
+            </div>
+          </div>
+        }
+      </div>
+      <label for="password" class="form-label ps-2 fw-semibold fst-italic">Password:</label>
+      <div class="mb-2 px-4">
+
+        <input formControlName="password" type="password" class="form-control" id="password" placeholder=" password">
+        @if (registerform.get('password')?.errors && registerform.get('password')?.touched) {
+          <div class="alert alert-danger  d-flex align-items-center mt-2 py-2"  role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px"  class="bi   me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <div>
+              @if (registerform.get('password')?.getError('required')) {
+                <li>password is required</li>
+              }
+              @else if (registerform.get('password')?.getError('pattern')) {
+                <li>password must start with upperCase then from 6 to more any word chars.</li>
+              }
+            </div>
+          </div>
+        }
+      </div>
+      <label for="Age" class="form-label ps-2 fw-semibold fst-italic">Age:</label>
+      <div class="mb-2 px-4">
+        <input formControlName="age" type="number" class="form-control" id="Age" placeholder=" Age">
+        @if (registerform.get('age')?.errors && registerform.get('age')?.touched) {
+          <div class="alert alert-danger  d-flex align-items-center mt-2 py-2"  role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px"  class="bi   me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <div>
+              @if (registerform.get('age')?.getError('required')) {
+                <li>age is required</li>
+              }
+              @else if  (registerform.get('age')?.getError('pattern')) {
+                <li>Invalid age! Please enter a number between 10 and 80. </li>
+              }
+            </div>
+          </div>
+        }
+      </div>
+      <label for="Phone" class="form-label ps-2 fw-semibold fst-italic">Phone:</label>
+      <div class="mb-2 px-4">
+        <input formControlName="phone" type="tel" class="form-control" id="Phone" placeholder="Your number">
+        @if (registerform.get('phone')?.errors && registerform.get('phone')?.touched) {
+          <div class="alert alert-danger  d-flex align-items-center mt-2 py-2"  role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px"  class="bi   me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <div>
+              @if (registerform.get('phone')?.getError('required')) {
+                <li>phone is required</li>
+              }
+              @else if  (registerform.get('phone')?.getError('pattern')) {
+                <li>phone must be only egypt phone numbers</li>
+              }
+            </div>
+          </div>
+        }
+      </div>
+      <button  class=" btn pink-color d-block mx-auto mt-4  fs-5 px-5 py-2 rounded-4" type="submit">SignUp
+        @if (isloading) {
+          <i class="fa-solid fa-spinner fa-spin"></i>
+        }
+      </button>
+    </form>
+  </div>
+</section>

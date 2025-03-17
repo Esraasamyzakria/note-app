@@ -1,0 +1,74 @@
+<section>
+  <div class=" container">
+    <!-- add note -->
+    <button  data-bs-toggle="modal" data-bs-target="#exampleModal"  class=" btn pink-color d-block mx-auto mt-3 mb-5  fs-5 px-5 py-2 rounded-4" type="submit">Add Nodes</button>
+    <!-- search -->
+     <input type="search" [(ngModel)]="mytitle" class=" bg-opacity-25 form-control  mb-5 w-50 mx-auto" placeholder="Search.......">
+     <!-- ............... -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5  colorr" id="exampleModalLabel">Add New Notes</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="addnoteform" (ngSubmit)="addsubmitnote()">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label colorr">Title:</label>
+                <input formControlName="title" type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label colorr">Contact:</label>
+                <textarea formControlName="content" class="form-control" id="message-text"></textarea>
+              </div>
+              <button type="submit" data-bs-dismiss="modal" class="btn pink-color d-block mx-auto mt-3 mb-5  fs-5 px-5 py-2 rounded-4">Add Note</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- updatenote -->
+    <div class="modal fade" id="updatemodel" tabindex="-1" aria-labelledby="updatemodelLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5  colorr" id="updatemodelLabel">Update Your Notes</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="updatenoteform" (ngSubmit)="submitupdatedateform()">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label colorr">Title:</label>
+                <input formControlName="title" type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label colorr">Contact:</label>
+                <textarea formControlName="content" class="form-control" id="message-text"></textarea>
+              </div>
+              <button type="submit" data-bs-dismiss="modal" class="btn btn-warning d-block mx-auto mt-3 mb-5  fs-5 px-5 py-2 rounded-4">Update Note</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- .................. -->
+    <div class="row g-4">
+      @for (note of notesdata | search : mytitle; track note._id) {
+        <div class="col-md-4 col-lg-3 col-sm-6 mb-3 mb-sm-0 shadow-lg ">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title colorr fs-3 fst-italic">{{note.title}}</h5>
+              <p class="card-text fs-5">{{note.content}}</p>
+            </div>
+            <div class=" d-flex justify-content-between p-2">
+              <button (click)="setUpdatedate(note,note._id)" data-bs-toggle="modal" data-bs-target="#updatemodel"   type="submit" class=" btn btn-outline-warning "><i class="fa-solid fa-pen-to-square"></i>Update</button>
+              <button (click)="deletenote(note._id)" type="submit" class=" btn btn-outline-danger  "><i class="fa-solid fa-trash"></i> delete</button>
+            </div>
+          </div>
+
+        </div>
+      }
+    </div>
+  </div>
+</section>
