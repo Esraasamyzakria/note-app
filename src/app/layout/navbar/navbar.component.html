@@ -18,12 +18,12 @@
       @if (islogin()) {
         <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a routerLinkActive="routr" routerLink="/home" class="nav-link   colores fs-5" aria-current="page"
+            <a routerLinkActive="routr" routerLink="/home" class="nav-link  px-3 me-3 colores fs-5" aria-current="page"
               >Home</a
             >
           </li>
           <li class="nav-item">
-            <a  routerLinkActive="routr" routerLink="/notes" class="nav-link colores fs-5 ">Notes</a>
+            <a  routerLinkActive="routr" routerLink="/notes" class="nav-link colores px-3  fs-5 ">Notes</a>
           </li>
         </ul>
         <button  (click)="authService.SignOut()" class=" btn pink-color me-3" type="submit">Logout</button>
